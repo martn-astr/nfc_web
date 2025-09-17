@@ -25,6 +25,19 @@
                 width: 250px;
             }
 
+
+            .box {
+            display: inline-block;
+            width: 45%;
+            vertical-align: top;
+            box-sizing:border-box;
+            padding: 20px;
+            margin: 40px;
+            background-color: #f0f0f0;
+
+            }
+            
+
             .cell {
                 border: 1px solid;
                 display: flex;
@@ -73,7 +86,7 @@
 
 
     <nav>
-        <a href="#sekce1" onclick="showSection('sekce1')">Co to je</a>
+        <a href="#sekce1" onclick="showSection('sekce1')">Co je NFC</a>
         <a href="#sekce2" onclick="showSection('sekce2')">Výhody a Nevýhody</a>
         <a href="#sekce3" style="position: fixed; top: 0; right: 0" onclick="showSection('sekce3')">Piškworky</a> 
         <a href="#sekce4" onclick="showSection('sekce4')">Historie</a>
@@ -81,14 +94,31 @@
     </nav>
 
     <section id="sekce1" class="content"> 
-    <h2 style="text-align: center; font-size: 50px  ">Co je NFC</h2>
-    <p style="text-align: center; font-size: 20px "> co já vím</p>
+    <h2 style="text-align: center; font-size: 50px  ">Obecné informace, co je NFC​</h2>
+    <p style="text-align: center; font-size: 20px "> Využívá elektromagnetické pole pro přenos dat mezi dvěma zařízeními​</p>
+    <p style="text-align: center; font-size: 20px "> Přenášení dat mezi dvěmi zařízeními (na vzdálenost cca do 10cm)</p>
     </section>
 
 
     <section id="sekce2" class="content">
-        <h2 style="text-align:center; font-size: 50px">nemam tucha</h2>
-        <p style="text-align: center; font-size: 20px ">idk </p>
+    
+      <div class="box">
+      <h3 style="font-size: 40px">Výhody</h3>
+      <ul>
+        <li style="font-size: 20px; width: 200 ;">Rychlý přenos dat (stačí přiblížit)​</li>
+        <li style="font-size: 20px; width: 230 ; ">Snadné použití (není nutné žádné párování)​</li>
+        <li style="font-size: 20px; width: 200 ; ">Bezpečnost – malý dosah snižuje riziko odposlechu</li>
+      </ul> 
+        </div>
+
+        <div class="box">
+      <h3 style="font-size: 40px">Nevýhody</h3>
+      <ul>
+        <li style="font-size: 20px; width: 200 ;">Závislost na podpoře zařízení​ ​</li>
+        <li style="font-size: 20px; width: 200 ; ">Riziko zneužití při špatném zabezpečení​​</li>
+        <li style="font-size: 20px; width: 200 ; ">Ne všechny země nebo obchody podporují NFC platby</li>
+      </ul> 
+        </div>
     </section>
 
     <section id="sekce3" class="content">
@@ -104,19 +134,23 @@
 
         <section id="sekce4" class="content">
         <h2 style="text-align:center; font-size: 50px">Historie NFC</h2>
-        <p style="text-align: center; font-size: 20px ">idk </p>
+        <ul>
+            <p style="text-align: center; font-size: 20px">NFC bylo vytvořeno v roce 2002 (Sony, Nokia, Phillips)​</p>
+            <p style="text-align: center; font-size: 20px"> První mobil s funkcí NFC byla Nokia 6131 ​</p>
+            <p style="text-align: center; font-size: 20px">V současnosti standard v chytrých zařízeních</p>
+        </ul>
     </section>
 
-    <footer style="position: fixed; bottom: 0; left: 0; width: 100%;"> Copyright right to Jakub Kotzian & Martin </footer>
+    <footer style="position: fixed; bottom: 0; left: 0; width: 100%;"> Vytvořeno Martinem a Jakubem </footer>
 
     <script>
             function showSection(id) {
-                // Skryj všechny sekce
+                
                 document.querySelectorAll('section').forEach(section => {
                     section.classList.remove('active');
                 });
 
-                // Zobraz jen jednu sekci
+                
                 document.getElementById(id).classList.add('active');
             }
         </script>
