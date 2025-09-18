@@ -158,12 +158,15 @@
 
             nav {
                 position: relative ;
+                align-items: center;
+                justify-content: center;
                 width: auto;
+                display:flex;
                 top:0;
                 left:50%;
                 border-radius:8px;
                 background: linear-gradient(45deg, #00a597, #4341ec);
-        
+                padding: 10px 0;
                 text-align: center;
                 transform: translateX(-50%);
             }
@@ -171,15 +174,25 @@
 
             nav a {
                 color: white;
-                padding: 14px 20px;
+                padding: 7px 10px;
                 display: inline-block;
+                font: 16px;
+                position: relative;
                 text-decoration: none;
-                transition: background 0.3s ease, color 0.3s ease, border-radius 0.3s ease;
+                transition: color 0.3s ease, color 0.3s ease, border-radius 0.3s ease;
+            }
+
+            #hover-line {
+                position: absolute;
+                bottom: 0;
+                height: 4px;
+                width: 0;
+                background: linear-gradient(45deg, #222, #ff2222);
+                transition: left 0.3s ease, width 0.3s ease;
             }
 
             nav a:hover {
                 cursor: none;
-                background: linear-gradient(45deg, #222, #ff2222);
                 color: black;
                 border-radius: 8px;
                 

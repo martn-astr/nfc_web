@@ -14,12 +14,12 @@
 
 
 
-    <nav >
+    <nav id="navbar" >
         <a href="#sekce1" onclick="showSection('sekce1')">Co je NFC</a>
         <a href="#sekce2" onclick="showSection('sekce2')">Výhody a Nevýhody</a>
-        <a href="#sekce3" style="position: absolute; top: 0; right: 0" onclick="showSection('sekce3')">Piškworky</a> 
+        <a href="#sekce3" style="position: absolute; top: 10; right: 0" onclick="showSection('sekce3')">Piškworky</a> 
         <a href="#sekce4" onclick="showSection('sekce4')">Historie</a>
-
+        <span id="hover-line"></span>
     </nav >
 
     <section id="sekce1" class="content"> 
@@ -34,18 +34,18 @@
       <div class="box">
       <h3 style="font-size: 40px"; class="gradient_nadpis">Výhody</h3>
       <ul>
-        <li style="font-size: 20px; width: 200 "; class="gradient"  >Rychlý přenos dat (stačí přiblížit)​</li>
-        <li style="font-size: 20px; width: 230 "; class="gradient" >Snadné použití (není nutné žádné párování)​</li>
-        <li style="font-size: 20px; width: 200 ";  class="gradient">Bezpečnost – malý dosah snižuje riziko odposlechu</li>
+        <li style="font-size: 20px; width: 300 "; class="gradient"  >Rychlý přenos dat (stačí přiblížit)​</li>
+        <li style="font-size: 20px; width: 300 "; class="gradient" >Snadné použití (není nutné žádné párování)​</li>
+        <li style="font-size: 20px; width: 300 ";  class="gradient">Bezpečnost – malý dosah snižuje riziko odposlechu</li>
       </ul> 
         </div>
 
         <div class="box">
       <h3 style="font-size: 40px"; class="gradient_nadpis">Nevýhody</h3>
       <ul>
-        <li style="font-size: 20px; width: 200 ;"; class="gradient">Závislost na podpoře zařízení​ ​</li>
-        <li style="font-size: 20px; width: 200 ;" ; class="gradient">Riziko zneužití při špatném zabezpečení​​</li>
-        <li style="font-size: 20px; width: 200 ;" ; class="gradient" >Ne všechny země nebo obchody podporují NFC platby</li>
+        <li style="font-size: 20px; width: 300 ;"; class="gradient">Závislost na podpoře zařízení​ ​</li>
+        <li style="font-size: 20px; width: 300 ;" ; class="gradient">Riziko zneužití při špatném zabezpečení​​</li>
+        <li style="font-size: 20px; width: 300 ;" ; class="gradient" >Ne všechny země nebo obchody podporují NFC platby</li>
       </ul> 
         </div>
     </section>
@@ -131,14 +131,14 @@
 const music = document.getElementById("background-music");
 const volumeControl = document.getElementById("volumeControl");
 
-// Nastaví hlasitost podle posuvníku při načtení
+
 music.volume = volumeControl.value;
 
-// Poslouchá změny na posuvníku a mění hlasitost
+
 volumeControl.addEventListener('input', function() {
   music.volume = this.value;
 });</script>
-
+<script src="hover.js"></script>
         
     </body>
 
