@@ -4,80 +4,9 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>NFC</title>
-        <style>
-            body {
-                font-family: Arial, sans-serif;
-                margin: 0;
-                padding: 0;
-            }
-
-            header {
-                background-color: #333;
-                color: white;
-                padding: 15px;
-                text-align: center;
-            }
-
-            .board {
-                display: grid;
-                grid-template-columns: repeat(3, 1fr);
-                height: 250px;
-                width: 250px;
-            }
-
-
-            .box {
-            display: inline-block;
-            width: 45%;
-            vertical-align: top;
-            box-sizing:border-box;
-            padding: 20px;
-            margin: 40px;
-            background-color: #f0f0f0;
-
-            }
-            
-
-            .cell {
-                border: 1px solid;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-
-            nav {
-                background-color: #444;
-                text-align: center;
-            }
-
-            nav a {
-                color: white;
-                padding: 14px 20px;
-                display: inline-block;
-                text-decoration: none;
-            }
-
-            nav a:hover {
-                background-color: #ddd;
-                color: black;
-            }
-
-            section {
-                display: none; 
-                padding: 20px;
-            }
-
-            section.active {
-                display: block; 
-            }
-
-            footer {
-                background-color: #333;
-                color: white;
-                text-align: center;
-                padding: 10px;
-            }
-        </style>
+       <link rel="stylesheet" href="webstylecss.css">
+       <link rel="website icon" type="png" href="nfc.png">
+       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     </head>
 
     <body>
@@ -85,34 +14,34 @@
 
 
 
-    <nav>
+    <nav >
         <a href="#sekce1" onclick="showSection('sekce1')">Co je NFC</a>
         <a href="#sekce2" onclick="showSection('sekce2')">Výhody a Nevýhody</a>
-        <a href="#sekce3" style="position: fixed; top: 0; right: 0" onclick="showSection('sekce3')">Piškworky</a> 
+        <a href="#sekce3" style="position: absolute; top: 0; right: 0" onclick="showSection('sekce3')">Piškworky</a> 
         <a href="#sekce4" onclick="showSection('sekce4')">Historie</a>
 
-    </nav>
+    </nav >
 
     <section id="sekce1" class="content"> 
-    <h2 style="text-align: center; font-size: 50px  ">Obecné informace, co je NFC​</h2>
-    <p style="text-align: center; font-size: 20px "> Využívá elektromagnetické pole pro přenos dat mezi dvěma zařízeními​</p>
-    <p style="text-align: center; font-size: 20px "> Přenášení dat mezi dvěmi zařízeními (na vzdálenost cca do 10cm)</p>
+    <h2 style="text-align: center; font-size: 50px"; class="gradient_nadpis">Obecné informace, co je NFC​</h2>
+    <p style="text-align: center; font-size: 20px "; class="gradient"> Využívá elektromagnetické pole pro přenos dat mezi dvěma zařízeními​</p>
+    <p style="text-align: center; font-size: 20px "; class="gradient"> Přenášení dat mezi dvěmi zařízeními (na vzdálenost cca do 10cm)</p>
     </section>
 
 
     <section id="sekce2" class="content">
     
       <div class="box">
-      <h3 style="font-size: 40px">Výhody</h3>
+      <h3 style="font-size: 40px"; class="gradient_nadpis">Výhody</h3>
       <ul>
-        <li style="font-size: 20px; width: 200 ;">Rychlý přenos dat (stačí přiblížit)​</li>
+        <li style="font-size: 20px; width: 200 ;" >Rychlý přenos dat (stačí přiblížit)​</li>
         <li style="font-size: 20px; width: 230 ; ">Snadné použití (není nutné žádné párování)​</li>
         <li style="font-size: 20px; width: 200 ; ">Bezpečnost – malý dosah snižuje riziko odposlechu</li>
       </ul> 
         </div>
 
         <div class="box">
-      <h3 style="font-size: 40px">Nevýhody</h3>
+      <h3 style="font-size: 40px"; class="gradient_nadpis">Nevýhody</h3>
       <ul>
         <li style="font-size: 20px; width: 200 ;">Závislost na podpoře zařízení​ ​</li>
         <li style="font-size: 20px; width: 200 ; ">Riziko zneužití při špatném zabezpečení​​</li>
@@ -122,26 +51,38 @@
     </section>
 
     <section id="sekce3" class="content">
-<h1>Piškvorky</h1>
+<h1 ; class="gradient_nadpis" style="text-align: center;">Piškvorky</h1>
 <footer style="position: fixed; bottom: 38; left:0; width:200px"> Credit hry: Antonín Trupar</footer>
-    <button onclick="startGame(1)">Hrat s botem</button>
+
+<div class="game-container">
+<div class="buttons">
+
+    <button onclick="startGame(1)";>Hrat s botem</button>
     <button onclick="startGame(2)">Hrat s druhým hráčem</button>
+
+    </div>
+
     <div id="board" class="board"></div>
-    <div id="message"></div>
+    <div id="message" style="color: lightblue" ></div>
+    </div>
 <script src="piskvorec.js"></script>
 
     </section>
 
         <section id="sekce4" class="content">
-        <h2 style="text-align:center; font-size: 50px">Historie NFC</h2>
+        <h2 style="text-align:center; font-size: 50px"; class="gradient_nadpis">Historie NFC</h2>
         <ul>
-            <p style="text-align: center; font-size: 20px">NFC bylo vytvořeno v roce 2002 (Sony, Nokia, Phillips)​</p>
-            <p style="text-align: center; font-size: 20px"> První mobil s funkcí NFC byla Nokia 6131 ​</p>
-            <p style="text-align: center; font-size: 20px">V současnosti standard v chytrých zařízeních</p>
+            <p style="text-align: center; font-size: 20px"; class="gradient">NFC bylo vytvořeno v roce 2002 (Sony, Nokia, Phillips)​</p>
+            <p style="text-align: center; font-size: 20px"; class="gradient"> První mobil s funkcí NFC byla Nokia 6131 ​</p>
+            <p style="text-align: center; font-size: 20px"; class="gradient">V současnosti standard v chytrých zařízeních</p>
         </ul>
     </section>
 
-    <footer style="position: fixed; bottom: 0; left: 0; width: 100%;"> Vytvořeno Martinem a Jakubem </footer>
+
+ 
+        <footer style="position: fixed; bottom: 0; left: 0; width: 100%;">  <a href="https://www.instagram.com/martn.astro" target="_blank">
+    <i class="fab fa-instagram"></i>
+  </a> Created by Martin</footer>
 
     <script>
             function showSection(id) {
@@ -154,6 +95,50 @@
                 document.getElementById(id).classList.add('active');
             }
         </script>
+
+        <script>
+    const cursor = document.createElement('div');
+    cursor.classList.add('custom-cursor');
+    document.body.appendChild(cursor);
+
+    document.addEventListener('mousemove', (e) => {
+        cursor.style.left = e.clientX + 'px';
+        cursor.style.top = e.clientY + 'px';
+    });
+</script>
+
+
+<audio id="background-music" loop autoplay>
+  <source src="sound.mp3" type="audio/mp3">
+  Your browser does not support the audio element.
+</audio>
+
+<button id="music" onclick="toggleMusic()">Toggle Music</button>
+<input type="range" id="volumeControl" min="0" max="1" step="0.01" value="0.5">
+
+<script>
+    var music = document.getElementById("background-music");
+
+    function toggleMusic() {
+        if (music.paused) {
+            music.play();
+        } else {
+            music.pause();
+        }
+    }
+</script>
+<script src="music.js">
+const music = document.getElementById("background-music");
+const volumeControl = document.getElementById("volumeControl");
+
+// Nastaví hlasitost podle posuvníku při načtení
+music.volume = volumeControl.value;
+
+// Poslouchá změny na posuvníku a mění hlasitost
+volumeControl.addEventListener('input', function() {
+  music.volume = this.value;
+});</script>
+
         
     </body>
 
