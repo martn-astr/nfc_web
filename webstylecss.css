@@ -1,0 +1,225 @@
+
+            body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+                cursor: none;
+                background: url('KB0V5U.jpg');
+
+            }
+
+            header {
+                background-color: #333;
+                color: white;
+                padding: 15px;
+                text-align: center;
+            }
+            
+           .custom-cursor {
+          
+             position: fixed;
+             width: 20px;
+             height: 20px;
+             border-radius: 50%;
+             background-color: rgba(255, 255, 255, 0.3);
+             pointer-events: none;
+             z-index: 9999;
+             transform: translate(-50%, -50%);
+             backdrop-filter: blur(2px); 
+
+           }
+            .game-container {
+                 display: flex;
+                 flex-direction: column;
+                 align-items: center; 
+                 gap: 20px; 
+                margin-top: 30px;
+            }
+            
+            #music{
+                position: fixed;
+                display: flex;
+                bottom: 15px;
+                right: 15px;
+                padding: 10px 20px;
+                font-size: 16px;
+                background: linear-gradient(45deg, #002fff #8c00ff);
+                color: linear-gradient(45deg, #002fff #8c00ff);
+                border: none;
+                border-radius: 30px;
+                cursor: none;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                transition:  0.3s ease;
+            }
+
+            
+            #music:hover{
+                cursor: none;
+                background: linear-gradient(45deg, #002fff #8c00ff);
+                color: linear-gradient(45deg, #002fff #8c00ff);
+                box-shadow: 4px
+                4px 8px #ff0000be, -4px -4px 8px #ff0000 ;
+            }
+
+            #music:active{
+                cursor: none;
+                box-shadow: inset 4px 4px 8px #ff0000be, inset -4px -4px 8px #ff0000 ;
+            }
+            .hidden {
+                  display: none;
+            }
+
+            #volumeControl {
+                 position: fixed;
+                    bottom: 50px;
+                    right: 15px;
+                    width: 130px;
+            }            
+            #volumeControl:hover {
+                cursor: none;
+                background-color: linear-gradient(45deg, #ffffff #000000);
+                color: linear-gradient(45deg, #ffffff #000000);
+                box-shadow: 4px
+                4px 8px #ffffffbe, -4px -4px 8px #ffffff ;
+            }
+            #volumeControl:active {
+                cursor: none;
+                box-shadow: inset 4px 4px 8px #ffffffbe, inset -4px -4px 8px #000000 ;
+            }            
+         .background-music {
+
+            display: none; 
+            }
+          .icons{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 500px;
+            height: 300px;
+            padding: 60px;
+          }
+
+            .buttons {
+                cursor: none;
+                 display: flex;
+                 padding: 15px 40px;
+                 gap: 10px; 
+                 color: linear-gradient(45deg, #002fff, #8c00ff);
+                 font-family: monospace;
+                 font-size: 16px;
+                 border-radius: 50px;
+                 border: none;
+                 transition: 0.3s ease-in-out;
+                 box-shadow: 8px 8px 16px #ffffffbe, -8px -8px 16px #ffffff;
+            }
+            button:hover{
+                cursor: none;
+                box-shadow: 4px 4px 8px #ffffffbe, -4px -4px 8px #ffffff ;
+            }
+            
+            button:active{
+                cursor: none;
+                box-shadow: inset 4px 4px 8px #ffffffbe, inset -4px -4px 8px #ffffff ;
+            }
+           
+            .board {
+
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                height: 250px;
+                width: 250px;
+                background-color: #f0f0f059;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+
+            }
+
+            
+            .box {
+                display: inline-block;
+                width: 45%;
+                vertical-align: top;
+                box-sizing:border-box;
+                padding: 20px;
+                margin: 40px;
+                background-color: #f0f0f06b;
+
+            }
+            
+
+            .cell {
+                border: 1px solid;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            nav {
+                position: relative ;
+                width: auto;
+                top:0;
+                left:50%;
+                border-radius:8px;
+                background: linear-gradient(45deg, #00a597, #4341ec);
+        
+                text-align: center;
+                transform: translateX(-50%);
+            }
+          
+
+            nav a {
+                color: white;
+                padding: 14px 20px;
+                display: inline-block;
+                text-decoration: none;
+                transition: background 0.3s ease, color 0.3s ease, border-radius 0.3s ease;
+            }
+
+            nav a:hover {
+                cursor: none;
+                background: linear-gradient(45deg, #222, #ff2222);
+                color: black;
+                border-radius: 8px;
+                
+            }
+            .gradient{
+                background: linear-gradient(90deg, #ff00ff,  #eeff00);
+                background-clip: text;
+                color: transparent;
+            }
+
+            .gradient_nadpis{
+                background: linear-gradient( #002fff, #8c00ff);
+                background-clip: text;
+                color: transparent;
+            }
+            section {
+                display: none; 
+                padding: 20px;
+            }
+
+            section.active {
+                display: block; 
+            }
+
+            footer {
+                background: linear-gradient(45deg, #00a597, #4341ec);
+                color: white;
+                text-align: center;
+                padding: 20px;
+            
+            }
+            footer a {
+                color: #fff;
+            
+                font-size: 24px;
+                text-decoration: none;
+                margin: 0 10px;
+                transition: color 0.3s;
+            }
+            footer a:hover {
+                cursor: none;
+                color: #E1306C
+            }
