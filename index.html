@@ -7,9 +7,12 @@
        <link rel="stylesheet" href="webstylecss.css">
        <link rel="website icon" type="png" href="nfc.png">
        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+       <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
+
     </head>
 
     <body>
+    <div id="tsparticles"></div>
 
 
 
@@ -17,8 +20,8 @@
     <nav id="navbar" >
         <a href="#sekce1" onclick="showSection('sekce1')">Co je NFC</a>
         <a href="#sekce2" onclick="showSection('sekce2')">Výhody a Nevýhody</a>
-        <a href="#sekce3" style="position: absolute; top: 10; right: 0" onclick="showSection('sekce3')">Piškworky</a> 
         <a href="#sekce4" onclick="showSection('sekce4')">Historie</a>
+          <a href="#sekce3" onclick="showSection('sekce3')">Piškworky</a> 
         <span id="hover-line"></span>
     </nav >
 
@@ -52,18 +55,18 @@
 
     <section id="sekce3" class="content">
 <h1 ; class="gradient_nadpis" style="text-align: center;">Piškvorky</h1>
-<footer style="position: fixed; bottom: 38; left:0; width:200px"> Credit hry: Antonín Trupar</footer>
+<footer style="position: fixed; bottom: 68; left:0; width:200px"> Credit hry: Antonín Trupar</footer>
 
 <div class="game-container">
 <div class="buttons">
 
-    <button onclick="startGame(1)";>Hrat s botem</button>
-    <button onclick="startGame(2)">Hrat s druhým hráčem</button>
+    <button id="button" onclick="startGame(1)";>Hrat s botem</button>
+    <button id="button"onclick="startGame(2)">Hrat s druhým hráčem</button>
 
     </div>
 
     <div id="board" class="board"></div>
-    <div id="message" style="color: lightblue" ></div>
+    <div id="message" style="color: rgb(171, 231, 252)" ></div>
     </div>
 <script src="piskvorec.js"></script>
 
@@ -84,6 +87,8 @@
     <i class="fab fa-instagram"></i>
   </a> Created by Martin</footer>
 
+
+  
     <script>
             function showSection(id) {
                 
@@ -139,6 +144,78 @@ volumeControl.addEventListener('input', function() {
   music.volume = this.value;
 });</script>
 <script src="hover.js"></script>
+
+<script>
+tsParticles.load("tsparticles", {
+  particles: {
+    number: {
+      value: 100
+    },
+    color: {
+      value: "#ffffff" 
+    },
+    opacity: {
+      value: 0 
+    },
+    size: {
+      value: 0 
+    },
+    links: {
+      enable: true,
+      color: ["#002fff"], 
+      color: ["#8c00ff"],
+      color: ["#00a597"],
+      distance: 160,
+      opacity: 0.8,
+      width: 1.5
+    },
+    move: {
+      enable: true,
+      speed: 2,
+    
+    
+    }
+  },
+  interactivity: {
+    events: {
+      onHover: {
+        enable: true,
+        mode: "repulse", 
+        distance: "10",
+       opacity: 100
+       
+      },
+                  "repulse": {
+                "distance": 10,
+                "duration": 0.4
+            },
+
+      onclick: {
+                "enable": true,
+                "mode": "push" 
+            },
+     
+    },
+    modes: {
+      repulse: {
+        distance: 100, 
+        duration: 4,
+        links: {
+          opacity: 1, 
+         
+
+            
+        }
+      }
+    }
+  },
+  background: {
+    color: "#0a0a1a" // tmavé pozadí
+  }
+});
+</script>
+
+
         
     </body>
 

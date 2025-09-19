@@ -43,8 +43,9 @@
                 right: 15px;
                 padding: 10px 20px;
                 font-size: 16px;
-                background: linear-gradient(45deg, #002fff #8c00ff);
-                color: linear-gradient(45deg, #002fff #8c00ff);
+                background: linear-gradient(45deg, #002fffab, #8c00ff9c);
+                color: rgb(255, 255, 255);
+                
                 border: none;
                 border-radius: 30px;
                 cursor: none;
@@ -55,13 +56,14 @@
             
             #music:hover{
                 cursor: none;
-                background: linear-gradient(45deg, #002fff #8c00ff);
-                color: linear-gradient(45deg, #002fff #8c00ff);
+                background: linear-gradient(45deg, #002fff, #8c00ff);
+                color: linear-gradient(45deg, #002fff, #8c00ff);
                 box-shadow: 4px
                 4px 8px #ff0000be, -4px -4px 8px #ff0000 ;
             }
 
             #music:active{
+                background: linear-gradient(45deg, #002fff, #8c00ff);
                 cursor: none;
                 box-shadow: inset 4px 4px 8px #ff0000be, inset -4px -4px 8px #ff0000 ;
             }
@@ -70,24 +72,36 @@
             }
 
             #volumeControl {
+                background: linear-gradient(45deg, #002fff, #8c00ff);
                  position: fixed;
-                    bottom: 50px;
+                    bottom: 52px;
                     right: 15px;
                     width: 130px;
-            }            
+                -webkit-appearance: none; 
+                appearance: none;        
+                width: 130px;
+                height: 8px;
+                border-radius: 5px;
+                background: linear-gradient(45deg, #001679bd, #008cff); 
+                outline: none; /* žádný rámeček */
+}
+
+                       
             #volumeControl:hover {
                 cursor: none;
+                background: linear-gradient(45deg, #002fff, #8c00ff);
                 background-color: linear-gradient(45deg, #ffffff #000000);
                 color: linear-gradient(45deg, #ffffff #000000);
                 box-shadow: 4px
-                4px 8px #ffffffbe, -4px -4px 8px #ffffff ;
+                4px 8px #ff0000be, -4px -4px 8px #ff0000 ;
             }
             #volumeControl:active {
+                background: linear-gradient(45deg, #002fff, #8c00ff);
                 cursor: none;
-                box-shadow: inset 4px 4px 8px #ffffffbe, inset -4px -4px 8px #000000 ;
+                box-shadow: inset 4px 4px 8px #ff0000be, inset -4px -4px 8px #000000 ;
             }            
          .background-music {
-
+            background: linear-gradient(45deg, #002fff, #8c00ff);
             display: none; 
             }
           .icons{
@@ -104,7 +118,7 @@
                  display: flex;
                  padding: 15px 40px;
                  gap: 10px; 
-                 color: linear-gradient(45deg, #002fff, #8c00ff);
+                 background: linear-gradient(45deg, #002fff, #8c00ff);
                  font-family: monospace;
                  font-size: 16px;
                  border-radius: 50px;
@@ -113,14 +127,18 @@
                  box-shadow: 8px 8px 16px #ffffffbe, -8px -8px 16px #ffffff;
             }
             button:hover{
+                background: linear-gradient(45deg, #002fff, #8c00ff);
                 cursor: none;
                 box-shadow: 4px 4px 8px #ffffffbe, -4px -4px 8px #ffffff ;
             }
             
             button:active{
+                background: linear-gradient(45deg, #002fff, #8c00ff);
                 cursor: none;
                 box-shadow: inset 4px 4px 8px #ffffffbe, inset -4px -4px 8px #ffffff ;
+
             }
+            
            
             .board {
 
@@ -133,6 +151,8 @@
                 top: 50%;
                 left: 50%;
                 transform: translate(-50%, -50%);
+                outline: #000000;
+                outline-color: #000000;
 
             }
 
@@ -160,17 +180,30 @@
                 position: relative ;
                 align-items: center;
                 justify-content: center;
-                width: auto;
-                display:flex;
+                width: 450px;
+                display:relative;
                 top:0;
                 left:50%;
                 border-radius:8px;
-                background: linear-gradient(45deg, #00a597, #4341ec);
+                background: linear-gradient(45deg, #00a59791, #4441ecb7);
                 padding: 10px 0;
                 text-align: center;
                 transform: translateX(-50%);
             }
-          
+            div .buttons{
+                    cursor: none;
+                 display: flex;
+                 padding: 15px 40px;
+                 gap: 10px; 
+                 background: linear-gradient(45deg, #002fff, #8c00ff);
+                 font-family: monospace;
+                 font-size: 16px;
+                 border-radius: 50px;
+                 border: none;
+                 transition: 0.3s ease-in-out;
+                 box-shadow: 8px 8px 16px #ffffffbe, -8px -8px 16px #ffffff;
+
+            }
 
             nav a {
                 color: white;
@@ -217,8 +250,22 @@
                 display: block; 
             }
 
+
+             #tsparticles {
+                 position: fixed;
+                 top: 0;
+                 left: 0;
+                 width: 100%;
+                 height: 100%;
+                 z-index: -1;
+                 background: #0a0a1a; /* tmavé pozadí */
+}
+
+
+
+
             footer {
-                background: linear-gradient(45deg, #00a597, #4341ec);
+                background: linear-gradient(45deg, #00a5976c, #4441ec67);
                 color: white;
                 text-align: center;
                 padding: 20px;
