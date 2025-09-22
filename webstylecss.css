@@ -83,7 +83,7 @@
             height: 8px;
             border-radius: 5px;
             background: linear-gradient(45deg, #001679bd, #008cff);
-            outline: none; /* žádný rámeček */
+            outline: none;
         }
 
 
@@ -115,33 +115,37 @@
             padding: 60px;
         }
 
-        .buttons {
-            cursor: none;
-            display: flex;
+        #buttonss {
+            position: relative;
+            display: relative;
+            top: 0;
+            left: 20px;
             padding: 15px 40px;
             gap: 10px;
-            background: linear-gradient(45deg, #002fff, #8c00ff);
-            font-family: monospace;
             font-size: 16px;
-            border-radius: 50px;
+            background: linear-gradient(45deg, #002fffab, #8c00ff9c);
+            color: rgb(255, 255, 255);
+
             border: none;
+            border-radius: 30px;
+            cursor: none;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             transition: 0.3s ease-in-out;
-            box-shadow: 8px 8px 16px #ffffffbe, -8px -8px 16px #ffffff;
         }
 
-        button:hover {
+
+        #buttonss:hover {
+            cursor: none;
+            background: linear-gradient(45deg, #002fff, #8c00ff);
+            color: linear-gradient(45deg, #002fff, #8c00ff);
+            box-shadow: 4px 4px 8px #ffffff, -4px -4px 8px #ffffff;
+        }
+
+        #buttonss:active {
             background: linear-gradient(45deg, #002fff, #8c00ff);
             cursor: none;
-            box-shadow: 4px 4px 8px #ffffffbe, -4px -4px 8px #ffffff;
+            box-shadow: inset 4px 4px 8px #ff0000, inset -4px -4px 8px #ff0000;
         }
-
-        button:active {
-            background: linear-gradient(45deg, #002fff, #8c00ff);
-            cursor: none;
-            box-shadow: inset 4px 4px 8px #ffffffbe, inset -4px -4px 8px #ffffff;
-
-        }
-
 
         .board {
 
@@ -192,21 +196,6 @@
             padding: 10px 0;
             text-align: center;
             transform: translateX(-50%);
-        }
-
-        div .buttons {
-            cursor: none;
-            display: flex;
-            padding: 15px 40px;
-            gap: 10px;
-            background: linear-gradient(45deg, #002fff, #8c00ff);
-            font-family: monospace;
-            font-size: 16px;
-            border-radius: 50px;
-            border: none;
-            transition: 0.3s ease-in-out;
-            box-shadow: 8px 8px 16px #ffffffbe, -8px -8px 16px #ffffff;
-
         }
 
         nav a {
