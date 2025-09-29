@@ -1,89 +1,156 @@
-   let board = [];
-        let currentPlayer = 'X'; // Hráč 'X' začíná
-        let gameEnded = false;
-        let gameMode = 0; // 1 - s botem, 2 - 2 hráči
-        let moves = [];
+let board = ["", "", "", "", "", "", "", "", ""];
+let currentPlayer = "X";
+let gameMode = 0;
+let gameOver = false;
 
-        function startGame(mode) {
-            gameMode = mode;
-            gameEnded = false;
-            board = Array(9).fill(null); // Inicializace prázdného pole
-            moves = [];
-            currentPlayer = 'X';
-            document.getElementById('message').textContent = "Na tahu hráč X";
-            console.log('render called')
-            renderBoard();
+function startGame(mode) {
+    gameMode = mode;
+    document.getElementById("game-mode").style.display = "none";
+    document.getElementById("game-board").style.display = "block";
+    resetGame();
+}
+function resetGame() {
+    board = ["", "", "", "", "", "", "", "", ""];
+    currentPlayer = "X";
+    gameOver = false;
+    updateBoard();
+    document.getElementById("status").textContent = gameMode === 1 ? "HrajeĹˇ proti botovi. ZaÄŤĂ­nĂˇ hrĂˇÄŤ X." : "ZaÄŤĂ­nĂˇ hrĂˇÄŤ X.";
+}
+function updateBoard() {
+    const cells = document.querySelectorAll(".cell");
+    for (let i = 0; i < 9; i++) {
+        cells[i].textContent = board[i];
+        cells[i].disabled = board[i] !== "" || gameOver;
+    }
+}
+function makeMove(index) {
+    if (gameOver || board[index] !== "") return;
+    board[index] = currentPlayer;
+    updateBoard();
+
+    if (checkWin(currentPlayer)) {
+        document.getElementById("status").textContent = `VyhrĂˇl hrĂˇÄŤ ${currentPlayer}!`;
+        gameOver = true;
+        return;
+    }
+    if (board.every(cell => cell !== "")) {
+        document.getElementById("status").textContent = "RemĂ­za!";
+        gameOver = true;
+        return;
+    }
+
+    if (gameMode === 1) {
+        if (currentPlayer === "X") {
+            currentPlayer = "O";
+            document.getElementById("status").textContent = "Hraje bot (O)...";
+            setTimeout(botMove, 500);
+        } else {
+            currentPlayer = "X";
+            document.getElementById("status").textContent = "TvĹŻj tah (X).";
         }
+    } else {
+        currentPlayer = currentPlayer === "X" ? "O" : "X";
+        document.getElementById("status").textContent = `Hraje hrĂˇÄŤ ${currentPlayer}.`;
+    }
+}
+function checkWin(player) {
+    const wins = [
+        [0,1,2],[3,4,5],[6,7,8],
+        [0,3,6],[1,4,7],[2,5,8],
+        [0,4,8],[2,4,6]
+    ];
+    return wins.some(combo =>
+        combo.every(i => board[i] === player)
+    );
+}
+function botMove() {
+    let move = findBestMove("O") || findBestMove("X");
+    if (move === null) {
+        const empty = board.map((v, i) => v === "" ? i : null).filter(v => v !== null);
+        move = empty[Math.floor(Math.random() * empty.length)];
+    }
+    board[move] = "O";
+    updateBoard();
 
-        function renderBoard() {
-            const boardDiv = document.querySelector('.board');
-            console.log('render in ', boardDiv)
-            boardDiv.innerHTML = '';
-            for (let i = 0; i < 9; i++) {
-                const cell = document.createElement('div');
-                cell.classList.add('cell');
-                cell.textContent = board[i] || '';
-                cell.onclick = () => handleMove(i);
-                boardDiv.appendChild(cell);
-            }
+    if (checkWin("O")) {
+        document.getElementById("status").textContent = "ProhrĂˇl jsi! VyhrĂˇl bot (O).";
+        gameOver = true;
+        return;
+    }
+    if (board.every(cell => cell !== "")) {
+        document.getElementById("status").textContent = "RemĂ­za!";
+        gameOver = true;
+        return;
+    }
+    currentPlayer = "X";
+    document.getElementById("status").textContent = "TvĹŻj tah (X).";
+}
+function findBestMove(player) {
+    const wins = [
+        [0,1,2],[3,4,5],[6,7,8],
+        [0,3,6],[1,4,7],[2,5,8],
+        [0,4,8],[2,4,6]
+    ];
+    for (const combo of wins) {
+        const [a, b, c] = combo;
+        const values = [board[a], board[b], board[c]];
+        if (values.filter(v => v === player).length === 2 && values.includes("")) {
+            return combo[values.indexOf("")];
         }
+    }
+    return null;
+}
 
-        function handleMove(index) {
-            if (gameEnded || board[index]) return;
+// Automat
+let budget = 100;
+function updateBudget() {
+    document.getElementById("budget").textContent = budget;
+}
+function resetAutomat() {
+    budget = 100;
+    updateBudget();
+    document.getElementById("automatResult").textContent = "";
+    document.getElementById("sazka").value = 10;
+}
+function tocit() {
+    let sazka = parseInt(document.getElementById("sazka").value);
+    if (isNaN(sazka) || sazka < 1) {
+        document.getElementById("automatResult").textContent = "Zadej platnou sĂˇzku!";
+        return;
+    }
+    if (budget < sazka) {
+        document.getElementById("automatResult").textContent = "NemĂˇĹˇ dostatek penÄ›z!";
+        return;
+    }
+    budget -= sazka;
+    updateBudget();
 
-            board[index] = currentPlayer;
-            moves.push(index);
-            renderBoard();
-            checkWinner();
-
-            if (!gameEnded) {
-                currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
-                document.getElementById('message').textContent = `Na tahu hráč ${currentPlayer}`;
-
-                if (gameMode === 1 && currentPlayer === 'O' && !gameEnded) {
-                    setTimeout(botMove, 500); // Simulace tahu bota s malým zpožděním
-                }
-            }
+    let symboly = [];
+    for (let i = 0; i < 3; i++) {
+        symboly[i] = Math.floor(Math.random() * 5) + 1;
+    }
+    let symbols = symboly.map(n => {
+        switch (n) {
+            case 1: return "đźŤ’";
+            case 2: return "đźŤ‰";
+            case 3: return "đźŤ‹";
+            case 4: return "đź””";
+            case 5: return "â­";
         }
+    });
+    let result = symbols.join("");
 
-        function checkWinner() {
-            const winningCombinations = [
-                [0, 1, 2], [3, 4, 5], [6, 7, 8], // Horizontálně
-                [0, 3, 6], [1, 4, 7], [2, 5, 8], // Vertikálně
-                [0, 4, 8], [2, 4, 6] // Diagonálně
-            ];
-
-            for (let combination of winningCombinations) {
-                const [a, b, c] = combination;
-                if (board[a] && board[a] === board[b] && board[a] === board[c]) {
-                    gameEnded = true;
-                    document.getElementById('message').textContent = `Vyhrál hráč ${board[a]}!`;
-                    return;
-                }
-            }
-
-            if (moves.length === 9) {
-                gameEnded = true;
-                document.getElementById('message').textContent = "Remíza!";
-            }
-        }
-
-        function botMove() {
-            if (gameEnded) return;
-
-            let availableMoves = [];
-            for (let i = 0; i < 9; i++) {
-                if (!board[i]) availableMoves.push(i);
-            }
-
-            const randomMove = availableMoves[Math.floor(Math.random() * availableMoves.length)];
-            board[randomMove] = 'O';
-            moves.push(randomMove);
-            renderBoard();
-            checkWinner();
-
-            if (!gameEnded) {
-                currentPlayer = 'X';
-                document.getElementById('message').textContent = "Na tahu hráč X";
-            }
-        }
+    // OPRAVA: vĂ˝hra pouze pĹ™i 3 stejnĂ˝ch symbolech!
+    let win = (symbols[0] === symbols[1] && symbols[1] === symbols[2]);
+    if (win) {
+        let vyhra = 10 * sazka;
+        budget += vyhra;
+        updateBudget();
+        document.getElementById("automatResult").textContent = result + " Výhraa! +" + vyhra + " K";
+    } else {
+        document.getElementById("automatResult").textContent = result + " Zkus to znovu!";
+    }
+    if (budget <= 0) {
+        document.getElementById("automatResult").textContent += " Prohrál jsi všechno";
+    }
+}
